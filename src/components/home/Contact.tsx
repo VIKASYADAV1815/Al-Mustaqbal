@@ -9,11 +9,11 @@ export default function Contact() {
   return (
     <section id="contact" className="py-32 bg-white text-[#2c2926] relative overflow-hidden" ref={ref}>
       {/* Decorative background element */}
-      <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[#f4f4f4] rounded-full blur-[120px] opacity-80 transform translate-x-1/2 -translate-y-1/2 pointer-events-none" />
+      <div className="absolute top-0 right-0 w-200 h-200 bg-[#f4f4f4] rounded-full blur-[120px] opacity-80 transform translate-x-1/2 -translate-y-1/2 pointer-events-none" />
 
       {/* Colorful Light Blobs behind Heading */}
-      <div className="absolute top-[10%] left-[-10%] w-[500px] h-[500px] bg-red-300/20 rounded-full blur-[120px] pointer-events-none z-0" />
-      <div className="absolute bottom-[20%] right-[10%] w-[400px] h-[400px] bg-fuchsia-300/20 rounded-full blur-[100px] pointer-events-none z-0" />
+      <div className="absolute top-[10%] left-[-10%] w-125 h-125 bg-red-300/20 rounded-full blur-[120px] pointer-events-none z-0" />
+      <div className="absolute bottom-[20%] right-[10%] w-100 h-100 bg-fuchsia-300/20 rounded-full blur-[100px] pointer-events-none z-0" />
 
       <div className="container mx-auto px-6 md:px-12 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-16 lg:gap-24">

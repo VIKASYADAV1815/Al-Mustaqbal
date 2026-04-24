@@ -38,8 +38,8 @@ export default function Hero() {
       <div className="absolute inset-0 bg-linear-to-b from-[#cfd4d8] to-[#e8e7e6] z-0" />
 
       {/* Colorful Light Blobs behind Heading */}
-      <div className="absolute top-[20%] left-[5%] w-[600px] h-[600px] bg-orange-300/30 rounded-full blur-[150px] pointer-events-none z-0" />
-      <div className="absolute top-[30%] left-[20%] w-[500px] h-[500px] bg-sky-300/20 rounded-full blur-[120px] pointer-events-none z-0" />
+      <div className="absolute top-[20%] left-[5%] w-150 h-150 bg-orange-300/30 rounded-full blur-[150px] pointer-events-none z-0" />
+      <div className="absolute top-[30%] left-[20%] w-125 h-125sky-300/20 rounded-full blur-[120px] pointer-events-none z-0" />
 
       {/* Floating Card 1 (Center, Behind Hills) [Z-10] -> BIG CARD */}
       <motion.div

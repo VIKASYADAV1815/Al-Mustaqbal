@@ -4,13 +4,13 @@ import { motion, useInView } from 'framer-motion';
 
 export default function About() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { once: true, margin: "-10%" });
 
   return (
     <section id="about" className="relative py-32 bg-zinc-50 overflow-hidden" ref={ref}>
       {/* Colorful Light Blobs behind Heading */}
-      <div className="absolute top-[20%] left-[-10%] w-[500px] h-[500px] bg-blue-400/20 rounded-full blur-[120px] pointer-events-none z-0" />
-      <div className="absolute top-[40%] left-[10%] w-[400px] h-[400px] bg-indigo-300/20 rounded-full blur-[100px] pointer-events-none z-0" />
+      <div className="absolute top-[20%] left-[-10%] w-125 h-125 bg-blue-400/20 rounded-full blur-[120px] pointer-events-none z-0" />
+      <div className="absolute top-[40%] left-[10%] w-100 h-100 bg-indigo-300/20 rounded-full blur-[100px] pointer-events-none z-0" />
 
       <div className="container mx-auto px-6 md:px-12 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">

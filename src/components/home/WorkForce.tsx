@@ -21,7 +21,7 @@ const PROJECT_STATS = [
 
 export default function WorkForce() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-50px" });
+  const isInView = useInView(ref, { once: true, margin: "-10%" });
 
   return (
     <section className="relative py-12 md:py-20 bg-white border-b border-zinc-100 overflow-hidden" ref={ref}>
@@ -74,9 +74,10 @@ export default function WorkForce() {
       <div className="relative z-10 w-full flex overflow-x-hidden group mb-10 md:mb-16">
 
         <motion.div
-          className="flex space-x-4 md:space-x-6 items-center whitespace-nowrap px-4 py-8"
+          className="flex space-x-4 md:space-x-6 items-center whitespace-nowrap px-4 py-8 [will-change:transform]"
           animate={{ x: ["0%", "-50%"] }}
           transition={{ repeat: Infinity, duration: 35, ease: "linear" }}
+          style={{ transform: 'translateZ(0)' }}
         >
           {/* Render array 3 times for a smooth infinite scroll without gaps */}
           {[...WORKFORCE_STATS, ...WORKFORCE_STATS, ...WORKFORCE_STATS].map((stat, index) => (

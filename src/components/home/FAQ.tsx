@@ -33,18 +33,8 @@ const faqs = [
 
 export default function FAQ() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-50px" });
+  const isInView = useInView(ref, { once: true, margin: "-10%" });
   const [openIndex, setOpenIndex] = useState<number | null>(0);
-  const [isLargeDevice, setIsLargeDevice] = useState(true);
-
-  useEffect(() => {
-    const checkDevice = () => {
-      setIsLargeDevice(window.innerWidth >= 1024);
-    };
-    checkDevice();
-    window.addEventListener('resize', checkDevice);
-    return () => window.removeEventListener('resize', checkDevice);
-  }, []);
 
   return (
     <section className="py-32 bg-[#f4f4f4] relative overflow-hidden" ref={ref}>
@@ -53,14 +43,14 @@ export default function FAQ() {
 
       {/* Colorful Light Blobs behind Heading */}
       <div className="absolute top-[10%] left-[5%] w-100 h-100 bg-cyan-300/20 rounded-full blur-[120px] pointer-events-none z-0" />
-      <div className="absolute bottom-[30%] left-[20%] w-[350px] h-[350px] bg-lime-300/20 rounded-full blur-[100px] pointer-events-none z-0" />
+      <div className="absolute bottom-[30%] left-[20%] w-87.5 h-87.5 bg-lime-300/20 rounded-full blur-[100px] pointer-events-none z-0" />
 
       <div className="container mx-auto px-6 md:px-12 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
           
           <motion.div
-            initial={isLargeDevice ? { opacity: 0, y: 50 } : false}
-            animate={isLargeDevice ? (isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }) : { opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: 50 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
             transition={{ duration: 0.8 }}
             className="lg:col-span-5 flex flex-col justify-between h-full"
           >
@@ -99,8 +89,8 @@ export default function FAQ() {
           </motion.div>
 
           <motion.div
-            initial={isLargeDevice ? { opacity: 0, x: 50 } : false}
-            animate={isLargeDevice ? (isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }) : { opacity: 1, x: 0 }}
+            initial={{ opacity: 0, x: 50 }}
+            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             className="lg:col-span-7 flex flex-col h-full"
           >
@@ -118,7 +108,7 @@ export default function FAQ() {
                       {faq.question}
                     </span>
                     <motion.div
-                      animate={{ rotate: isLargeDevice ? (openIndex === index ? 180 : 0) : 0 }}
+                      animate={{ rotate: openIndex === index ? 180 : 0 }}
                       transition={{ duration: 0.3 }}
                       className="shrink-0 text-zinc-600 group-hover:text-zinc-400"
                     >
@@ -129,9 +119,9 @@ export default function FAQ() {
                   <AnimatePresence>
                     {openIndex === index && (
                       <motion.div
-                        initial={isLargeDevice ? { height: 0, opacity: 0 } : { opacity: 1 }}
+                        initial={{ height: 0, opacity: 0 }}
                         animate={{ height: "auto", opacity: 1 }}
-                        exit={isLargeDevice ? { height: 0, opacity: 0 } : { opacity: 0 }}
+                        exit={{ height: 0, opacity: 0 }}
                         transition={{ duration: 0.3 }}
                       >
                         <div className="pb-4 pt-1 text-zinc-500 font-light leading-relaxed text-sm md:text-base">

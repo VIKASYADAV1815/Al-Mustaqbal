@@ -1,5 +1,5 @@
 "use client";
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, useInView } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 
@@ -38,7 +38,17 @@ const services = [
 
 export default function Services() {
   const containerRef = useRef(null);
-  const isInView = useInView(containerRef, { once: true, margin: "-100px" });
+  const isInView = useInView(containerRef, { once: true, margin: "-10%" });
+  const [isLargeDevice, setIsLargeDevice] = useState(true);
+
+  useEffect(() => {
+    const checkDevice = () => {
+      setIsLargeDevice(window.innerWidth >= 1024);
+    };
+    checkDevice();
+    window.addEventListener('resize', checkDevice);
+    return () => window.removeEventListener('resize', checkDevice);
+  }, []);
 
   return (
     <section id="services" className="py-32 bg-[#f4f4f4] relative overflow-hidden" ref={containerRef}>
@@ -46,8 +56,8 @@ export default function Services() {
       <div className="absolute inset-0 opacity-[0.04] pointer-events-none" style={{ backgroundImage: 'linear-gradient(#2c2926 1px, transparent 1px), linear-gradient(90deg, #2c2926 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
       
       {/* Colorful Light Blobs behind Heading */}
-      <div className="absolute top-[10%] left-[-5%] w-[450px] h-[450px] bg-pink-300/20 rounded-full blur-[120px] pointer-events-none z-0" />
-      <div className="absolute top-[30%] left-[10%] w-[350px] h-[350px] bg-yellow-300/20 rounded-full blur-[100px] pointer-events-none z-0" />
+      <div className="absolute top-[10%] left-[-5%] w-112.5 h-[450px] bg-pink-300/20 rounded-full blur-[120px] pointer-events-none z-0" />
+      <div className="absolute top-[30%] left-[10%] w-87.5 h-[350px] bg-yellow-300/20 rounded-full blur-[100px] pointer-events-none z-0" />
 
       <div className="container mx-auto px-6 md:px-12 flex flex-col lg:flex-row gap-24 relative z-10">
         
@@ -77,7 +87,7 @@ export default function Services() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 relative z-10 max-w-5xl">
           {services.map((service, index) => {
             return (
-              <ServiceCard key={index} service={service} />
+              <ServiceCard key={index} service={service} isLargeDevice={isLargeDevice} />
             );
           })}
         </div>
@@ -87,7 +97,7 @@ export default function Services() {
   );
 }
 
-function ServiceCard({ service }: { service: any }) {
+function ServiceCard({ service, isLargeDevice }: { service: any, isLargeDevice: boolean }) {
   const cardRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: cardRef,
@@ -101,8 +111,11 @@ function ServiceCard({ service }: { service: any }) {
   return (
     <motion.div 
           ref={cardRef}
-          style={{ scale, opacity, y }}
-          className="bg-[#333333] p-5 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 border border-zinc-800/50 hover:border-zinc-700 group relative overflow-hidden flex flex-col justify-between h-full"
+          style={isLargeDevice ? { scale, opacity, y } : { transform: 'translateZ(0)' }}
+          initial={isLargeDevice ? false : { opacity: 0, y: 20 }}
+          whileInView={isLargeDevice ? undefined : { opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-10%" }}
+          className="bg-[#333333] p-5 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 border border-zinc-800/50 hover:border-zinc-700 group relative overflow-hidden flex flex-col justify-between h-full [will-change:transform,opacity]"
         >
       {/* Decorative Card Background Pattern */}
       <div className="absolute inset-0 opacity-0 group-hover:opacity-5 transition-opacity duration-500 pointer-events-none" style={{ backgroundImage: 'radial-gradient(#ffffff 2px, transparent 2px)', backgroundSize: '24px 24px' }} />

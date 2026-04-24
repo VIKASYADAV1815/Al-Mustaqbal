@@ -1,11 +1,21 @@
 "use client";
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, useInView } from 'framer-motion';
 import Image from 'next/image';
 
 export default function Mission() {
   const containerRef = useRef(null);
-  const isInView = useInView(containerRef, { once: true, margin: "-100px" });
+  const isInView = useInView(containerRef, { once: true, margin: "-10%" });
+  const [isLargeDevice, setIsLargeDevice] = useState(true);
+
+  useEffect(() => {
+    const checkDevice = () => {
+      setIsLargeDevice(window.innerWidth >= 1024);
+    };
+    checkDevice();
+    window.addEventListener('resize', checkDevice);
+    return () => window.removeEventListener('resize', checkDevice);
+  }, []);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -26,8 +36,8 @@ export default function Mission() {
           {/* Left Column - Images */}
           <div className="relative h-150 w-full hidden lg:block">
             <motion.div 
-              style={{ y: y1 }}
-              className="absolute top-0 left-0 w-2/3 h-2/3 rounded-3xl overflow-hidden shadow-2xl z-10"
+              style={isLargeDevice ? { y: y1 } : { transform: 'translateZ(0)' }}
+              className="absolute top-0 left-0 w-2/3 h-2/3 rounded-3xl overflow-hidden shadow-2xl z-10 [will-change:transform]"
             >
               <Image 
                 src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=2000"
@@ -38,8 +48,8 @@ export default function Mission() {
               />
             </motion.div>
             <motion.div 
-              style={{ y: y2 }}
-              className="absolute bottom-0 right-0 w-2/3 h-2/3 rounded-3xl overflow-hidden shadow-2xl z-20"
+              style={isLargeDevice ? { y: y2 } : { transform: 'translateZ(0)' }}
+              className="absolute bottom-0 right-0 w-2/3 h-2/3 rounded-3xl overflow-hidden shadow-2xl z-20 [will-change:transform]"
             >
               <Image 
                 src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=2000"
@@ -55,8 +65,8 @@ export default function Mission() {
           <div className="space-y-24 relative">
             
             {/* Colorful Light Blobs */}
-            <div className="absolute top-[0%] right-[10%] w-[350px] h-[350px] bg-amber-300/20 rounded-full blur-[100px] pointer-events-none z-0" />
-            <div className="absolute bottom-[0%] right-[20%] w-[400px] h-[400px] bg-teal-300/20 rounded-full blur-[100px] pointer-events-none z-0" />
+            <div className="absolute top-[0%] right-[10%] w-87.5 h-87.5 bg-amber-300/20 rounded-full blur-[100px] pointer-events-none z-0" />
+            <div className="absolute bottom-[0%] right-[20%] w-100 h-100 bg-teal-300/20 rounded-full blur-[100px] pointer-events-none z-0" />
 
             {/* Mission */}
             <motion.div
