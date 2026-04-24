@@ -88,8 +88,6 @@ export default function Testimonials() {
 
       {/* Infinite Horizontal Scrolling Marquee */}
       <div className="relative flex overflow-x-hidden w-full group pb-8">
-        <div className="absolute top-0 left-0 h-full w-16 md:w-48 bg-gradient-to-r from-[#faf9f8] to-transparent z-10 pointer-events-none" />
-        <div className="absolute top-0 right-0 h-full w-16 md:w-48 bg-gradient-to-l from-[#faf9f8] to-transparent z-10 pointer-events-none" />
 
         <motion.div
           className="flex space-x-4 md:space-x-6 px-4 md:px-6 items-center w-max"
@@ -103,16 +101,16 @@ export default function Testimonials() {
               key={`${testimonial.id}-${idx}`}
               whileHover={{ y: -5, scale: 1.01 }}
               transition={{ duration: 0.3 }}
-              className="w-[280px] md:w-[360px] shrink-0 p-6 md:p-8 rounded-2xl bg-white border border-zinc-100 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] hover:shadow-[0_8px_30px_-4px_rgba(0,0,0,0.1)] transition-shadow duration-300 relative group/card"
+              className="w-[280px] md:w-[360px] shrink-0 p-6 md:p-8 rounded-2xl bg-[#333333] border border-zinc-800/50 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.15)] hover:shadow-[0_8px_30px_-4px_rgba(0,0,0,0.2)] transition-shadow duration-300 relative group/card"
             >
-              <Quote className="w-8 h-8 text-zinc-200 mb-4 group-hover/card:text-zinc-300 transition-colors duration-300" />
+              <Quote className="w-8 h-8 text-zinc-800 mb-4 group-hover/card:text-zinc-700 transition-colors duration-300" />
               
-              <p className="text-sm md:text-base leading-relaxed text-zinc-600 mb-8 min-h-[100px] font-light">
+              <p className="text-sm md:text-base leading-relaxed text-zinc-300 mb-8 min-h-[100px] font-light">
                 "{testimonial.content}"
               </p>
               
-              <div className="flex items-center gap-3 pt-4 border-t border-zinc-100 mt-auto">
-                <div className="w-10 h-10 rounded-full relative overflow-hidden border border-zinc-200 shrink-0 bg-zinc-50">
+              <div className="flex items-center gap-3 pt-4 border-t border-zinc-800/50 mt-auto">
+                <div className="w-10 h-10 rounded-full relative overflow-hidden border border-zinc-800 shrink-0 bg-zinc-900">
                   <Image 
                     src={testimonial.image}
                     alt={testimonial.author}
@@ -122,7 +120,7 @@ export default function Testimonials() {
                   />
                 </div>
                 <div>
-                  <h4 className="font-medium text-[#2c2926] text-sm">
+                  <h4 className="font-medium text-white text-sm">
                     {testimonial.author}
                   </h4>
                   <p className="text-[10px] uppercase tracking-widest text-zinc-500 mt-0.5">

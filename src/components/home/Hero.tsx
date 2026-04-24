@@ -111,14 +111,17 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
-            className="pointer-events-auto"
+            className="flex flex-wrap items-center gap-6 pointer-events-auto"
           >
             <Link 
               href="#projects" 
-              className="inline-flex items-center justify-center px-10 py-4 bg-[#3a3532] hover:bg-[#2a2624] text-white rounded-full uppercase tracking-widest text-xs font-medium transition-all hover:scale-105 shadow-xl"
+              className="inline-flex items-center justify-center px-10 py-4 bg-[#3a3532] hover:bg-[#2a2624] text-white rounded-full uppercase tracking-widest text-xs font-medium transition-all hover:scale-105 shadow-[10px_10px_25px_rgba(58,53,50,0.3),-8px_-8px_20px_rgba(255,255,255,0.6)] hover:shadow-[14px_14px_30px_rgba(58,53,50,0.4),-8px_-8px_20px_rgba(255,255,255,0.7)]"
             >
               Start
             </Link>
+            {/* <Link href="#about" className="inline-flex items-center justify-center w-14 h-14 rounded-full border border-zinc-300 text-[#2c2926] hover:bg-white transition-colors shadow-[6px_6px_15px_rgba(0,0,0,0.05),-6px_-6px_15px_rgba(255,255,255,0.8)]">
+              <Play size={18} className="ml-1" />
+            </Link> */}
           </motion.div>
 
           {/* Mobile Only Center Card Substitute */}

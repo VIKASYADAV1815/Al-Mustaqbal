@@ -94,23 +94,23 @@ export default function FAQ() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="lg:col-span-7 flex flex-col h-full"
           >
-            <div className="bg-white rounded-2xl shadow-sm border border-zinc-100 p-4 md:p-6 grow">
+            <div className="bg-[#333333] rounded-3xl shadow-[15px_15px_40px_rgba(0,0,0,0.1),-10px_-10px_20px_rgba(255,255,255,0.8)] border border-zinc-800/50 p-6 md:p-10 grow transition-all duration-500 hover:shadow-[20px_20px_50px_rgba(0,0,0,0.15),-10px_-10px_25px_rgba(255,255,255,0.9)]">
               {faqs.map((faq, index) => (
                 <div 
                   key={index}
-                  className="border-b border-zinc-100 last:border-0"
+                  className="border-b border-zinc-800/50 last:border-0"
                 >
                   <button
                     onClick={() => setOpenIndex(openIndex === index ? null : index)}
                     className="w-full flex items-center justify-between py-4 text-left focus:outline-none group"
                   >
-                    <span className={`text-sm md:text-base font-medium pr-6 transition-colors ${openIndex === index ? 'text-[#3a3532]' : 'text-zinc-700 group-hover:text-[#3a3532]'}`}>
+                    <span className={`text-sm md:text-base font-medium pr-6 transition-colors ${openIndex === index ? 'text-white' : 'text-zinc-400 group-hover:text-zinc-200'}`}>
                       {faq.question}
                     </span>
                     <motion.div
                       animate={{ rotate: openIndex === index ? 180 : 0 }}
                       transition={{ duration: 0.3 }}
-                      className="shrink-0 text-zinc-400 group-hover:text-[#3a3532]"
+                      className="shrink-0 text-zinc-600 group-hover:text-zinc-400"
                     >
                       <ChevronDown size={18} />
                     </motion.div>

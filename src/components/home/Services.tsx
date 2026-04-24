@@ -100,28 +100,28 @@ function ServiceCard({ service, index }: { service: any, index: number }) {
 
   return (
     <motion.div 
-      ref={cardRef}
-      style={{ scale, opacity, y }}
-      className="bg-white p-5 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 border border-zinc-100 group relative overflow-hidden flex flex-col justify-between h-full"
-    >
+          ref={cardRef}
+          style={{ scale, opacity, y }}
+          className="bg-[#333333] p-5 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 border border-zinc-800/50 hover:border-zinc-700 group relative overflow-hidden flex flex-col justify-between h-full"
+        >
       {/* Decorative Card Background Pattern */}
-      <div className="absolute inset-0 opacity-0 group-hover:opacity-5 transition-opacity duration-500 pointer-events-none" style={{ backgroundImage: 'radial-gradient(#2c2926 2px, transparent 2px)', backgroundSize: '24px 24px' }} />
+      <div className="absolute inset-0 opacity-0 group-hover:opacity-5 transition-opacity duration-500 pointer-events-none" style={{ backgroundImage: 'radial-gradient(#ffffff 2px, transparent 2px)', backgroundSize: '24px 24px' }} />
       
       <div className="flex flex-col gap-3 relative z-10 h-full">
         <div className="flex items-center justify-between">
-          <span className="text-3xl text-[#e5e5e5] font-serif leading-none group-hover:text-[#a59b92] transition-colors duration-500">
+          <span className="text-3xl text-[#1f2321] font-serif leading-none group-hover:text-zinc-600 transition-colors duration-500">
             {service.number}
           </span>
-          <motion.div className="w-8 h-8 rounded-full border border-zinc-200 flex items-center justify-center group-hover:bg-[#3a3532] group-hover:border-[#3a3532] group-hover:text-white transition-all duration-300 text-zinc-400 cursor-pointer">
+          <motion.div className="w-8 h-8 rounded-full border border-zinc-800 flex items-center justify-center group-hover:bg-white group-hover:border-white group-hover:text-[#333333] transition-all duration-300 text-zinc-500 cursor-pointer">
             <ArrowRight size={14} />
           </motion.div>
         </div>
         
         <div className="mt-2 grow">
-          <h4 className="text-lg md:text-xl text-[#2c2926] font-medium mb-2 group-hover:text-black transition-colors">
+          <h4 className="text-lg md:text-xl text-white font-medium mb-2 transition-colors">
             {service.title}
           </h4>
-          <p className="text-zinc-500 font-normal leading-relaxed text-sm line-clamp-3">
+          <p className="text-zinc-400 font-normal leading-relaxed text-sm line-clamp-3">
             {service.description}
           </p>
         </div>

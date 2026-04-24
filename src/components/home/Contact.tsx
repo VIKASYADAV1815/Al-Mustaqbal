@@ -58,30 +58,30 @@ export default function Contact() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="lg:col-span-3"
           >
-            <div className="bg-[#fcfcfc] p-10 md:p-14 rounded-4xl border border-zinc-100 shadow-sm">
-              <form className="space-y-10">
+            <div className="bg-[#333333] p-10 md:p-14 rounded-4xl border border-zinc-800/50 shadow-[15px_15px_40px_rgba(0,0,0,0.1),-10px_-10px_20px_rgba(255,255,255,0.8)]">
+            <form className="space-y-10">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                   <div className="relative">
-                    <input type="text" id="fname" className="peer w-full bg-transparent border-b border-zinc-300 py-3 text-[#2c2926] placeholder-transparent focus:outline-none focus:border-[#2c2926] transition-colors" placeholder="First Name" />
-                    <label htmlFor="fname" className="absolute left-0 -top-3.5 text-zinc-500 text-xs uppercase tracking-widest transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3 peer-placeholder-shown:normal-case peer-placeholder-shown:tracking-normal peer-focus:-top-3.5 peer-focus:text-xs peer-focus:uppercase peer-focus:tracking-widest peer-focus:text-[#2c2926]">First Name</label>
+                    <input type="text" id="fname" className="peer w-full bg-transparent border-b border-zinc-700 py-3 text-white placeholder-transparent focus:outline-none focus:border-white transition-colors" placeholder="First Name" />
+                    <label htmlFor="fname" className="absolute left-0 -top-3.5 text-zinc-500 text-xs uppercase tracking-widest transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3 peer-placeholder-shown:normal-case peer-placeholder-shown:tracking-normal peer-focus:-top-3.5 peer-focus:text-xs peer-focus:uppercase peer-focus:tracking-widest peer-focus:text-white">First Name</label>
                   </div>
                   <div className="relative">
-                    <input type="text" id="lname" className="peer w-full bg-transparent border-b border-zinc-300 py-3 text-[#2c2926] placeholder-transparent focus:outline-none focus:border-[#2c2926] transition-colors" placeholder="Last Name" />
-                    <label htmlFor="lname" className="absolute left-0 -top-3.5 text-zinc-500 text-xs uppercase tracking-widest transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3 peer-placeholder-shown:normal-case peer-placeholder-shown:tracking-normal peer-focus:-top-3.5 peer-focus:text-xs peer-focus:uppercase peer-focus:tracking-widest peer-focus:text-[#2c2926]">Last Name</label>
+                    <input type="text" id="lname" className="peer w-full bg-transparent border-b border-zinc-700 py-3 text-white placeholder-transparent focus:outline-none focus:border-white transition-colors" placeholder="Last Name" />
+                    <label htmlFor="lname" className="absolute left-0 -top-3.5 text-zinc-500 text-xs uppercase tracking-widest transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3 peer-placeholder-shown:normal-case peer-placeholder-shown:tracking-normal peer-focus:-top-3.5 peer-focus:text-xs peer-focus:uppercase peer-focus:tracking-widest peer-focus:text-white">Last Name</label>
                   </div>
                 </div>
                 
                 <div className="relative">
-                  <input type="email" id="email" className="peer w-full bg-transparent border-b border-zinc-300 py-3 text-[#2c2926] placeholder-transparent focus:outline-none focus:border-[#2c2926] transition-colors" placeholder="Email Address" />
-                  <label htmlFor="email" className="absolute left-0 -top-3.5 text-zinc-500 text-xs uppercase tracking-widest transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3 peer-placeholder-shown:normal-case peer-placeholder-shown:tracking-normal peer-focus:-top-3.5 peer-focus:text-xs peer-focus:uppercase peer-focus:tracking-widest peer-focus:text-[#2c2926]">Email Address</label>
+                  <input type="email" id="email" className="peer w-full bg-transparent border-b border-zinc-700 py-3 text-white placeholder-transparent focus:outline-none focus:border-white transition-colors" placeholder="Email Address" />
+                  <label htmlFor="email" className="absolute left-0 -top-3.5 text-zinc-500 text-xs uppercase tracking-widest transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3 peer-placeholder-shown:normal-case peer-placeholder-shown:tracking-normal peer-focus:-top-3.5 peer-focus:text-xs peer-focus:uppercase peer-focus:tracking-widest peer-focus:text-white">Email Address</label>
                 </div>
                 
                 <div className="relative">
-                  <textarea id="message" rows={4} className="peer w-full bg-transparent border-b border-zinc-300 py-3 text-[#2c2926] placeholder-transparent focus:outline-none focus:border-[#2c2926] transition-colors resize-none mt-2" placeholder="Message"></textarea>
-                  <label htmlFor="message" className="absolute left-0 -top-3.5 text-zinc-500 text-xs uppercase tracking-widest transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-5 peer-placeholder-shown:normal-case peer-placeholder-shown:tracking-normal peer-focus:-top-3.5 peer-focus:text-xs peer-focus:uppercase peer-focus:tracking-widest peer-focus:text-[#2c2926]">Tell us about your project</label>
+                  <textarea id="message" rows={4} className="peer w-full bg-transparent border-b border-zinc-700 py-3 text-white placeholder-transparent focus:outline-none focus:border-white transition-colors resize-none mt-2" placeholder="Message"></textarea>
+                  <label htmlFor="message" className="absolute left-0 -top-3.5 text-zinc-500 text-xs uppercase tracking-widest transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-5 peer-placeholder-shown:normal-case peer-placeholder-shown:tracking-normal peer-focus:-top-3.5 peer-focus:text-xs peer-focus:uppercase peer-focus:tracking-widest peer-focus:text-white">Tell us about your project</label>
                 </div>
                 
-                <button type="button" className="bg-[#2c2926] text-white px-12 py-4 rounded-full uppercase tracking-widest text-sm font-medium hover:bg-black transition-colors w-full md:w-auto hover:scale-105 transform duration-300 shadow-lg">
+                <button type="button" className="bg-white text-[#333333] px-12 py-4 rounded-full uppercase tracking-widest text-sm font-medium hover:bg-zinc-200 transition-all w-full md:w-auto hover:scale-105 transform duration-300 shadow-[10px_10px_20px_rgba(0,0,0,0.25),-6px_-6px_16px_rgba(255,255,255,0.1)] hover:shadow-[15px_15px_30px_rgba(0,0,0,0.3),-6px_-6px_16px_rgba(255,255,255,0.15)]">
                   Send Message
                 </button>
               </form>
