@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 
 const WORKFORCE_STATS = [
@@ -26,8 +26,24 @@ export default function WorkForce() {
   return (
     <section className="relative py-12 md:py-20 bg-white border-b border-zinc-100 overflow-hidden" ref={ref}>
       
-      {/* Light Background Pattern */}
-      <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'radial-gradient(#000000 1px, transparent 1px)', backgroundSize: '32px 32px' }} />
+      {/* Beautiful Dot Pattern Background */}
+      <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
+        <div className="absolute inset-0 bg-[#faf9f8]" />
+        <svg className="absolute inset-0 w-full h-full opacity-[0.08]" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="dots" x="0" y="0" width="24" height="24" patternUnits="userSpaceOnUse">
+              <circle cx="2" cy="2" r="1.5" fill="#3a3532" />
+            </pattern>
+            <linearGradient id="dotFade" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stopColor="#3a3532" stopOpacity="0" />
+              <stop offset="50%" stopColor="#3a3532" stopOpacity="1" />
+              <stop offset="100%" stopColor="#3a3532" stopOpacity="0" />
+            </linearGradient>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#dots)" />
+        </svg>
+        <div className="absolute inset-0 bg-linear-to-b from-white/90 via-transparent to-white/90 pointer-events-none" />
+      </div>
 
       {/* Colorful Light Blobs */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-rose-300/15 rounded-full blur-[120px] pointer-events-none z-0 translate-x-1/3 -translate-y-1/3" />

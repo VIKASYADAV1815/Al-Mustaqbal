@@ -1,25 +1,33 @@
 "use client";
-import React, { useRef } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Play, CheckCircle2 } from 'lucide-react';
+import { Play } from 'lucide-react';
 
 export default function Hero() {
   const containerRef = useRef(null);
-  
+  const [isLargeDevice, setIsLargeDevice] = useState(true);
+
+  useEffect(() => {
+    const checkDevice = () => {
+      setIsLargeDevice(window.innerWidth >= 1024);
+    };
+    checkDevice();
+    window.addEventListener('resize', checkDevice);
+    return () => window.removeEventListener('resize', checkDevice);
+  }, []);
+
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end start"]
   });
 
-  // Parallax layers
-  const textY = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
-  const card1Y = useTransform(scrollYProgress, [0, 1], ["0%", "80%"]);
-  const card2Y = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
-  const buildingY = useTransform(scrollYProgress, [0, 1], ["0%", "40%"]);
-  const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "10%"]);
-  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+  const textY = useTransform(scrollYProgress, [0, 1], ["0%", isLargeDevice ? "50%" : "0%"]);
+  const card1Y = useTransform(scrollYProgress, [0, 1], ["0%", isLargeDevice ? "80%" : "0%"]);
+  const buildingY = useTransform(scrollYProgress, [0, 1], ["0%", isLargeDevice ? "40%" : "0%"]);
+  const bgY = useTransform(scrollYProgress, [0, 1], ["0%", isLargeDevice ? "10%" : "0%"]);
+  const opacity = useTransform(scrollYProgress, isLargeDevice ? [0, 0.8] : [0, 1], [1, 0]);
 
   return (
     <section 
@@ -36,9 +44,9 @@ export default function Hero() {
       {/* Floating Card 1 (Center, Behind Hills) [Z-10] -> BIG CARD */}
       <motion.div
         style={{ y: card1Y, opacity }}
-        initial={{ opacity: 0, y: 100 }}
+        initial={isLargeDevice ? { opacity: 0, y: 100 } : false}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1.2, delay: 0.8 }}
+        transition={{ duration: 1.2, delay: isLargeDevice ? 0.8 : 0 }}
         className="absolute top-[25%] left-[calc(45%+12px)] transform -translate-x-1/2 bg-white/95 backdrop-blur-md p-8 rounded-4xl shadow-2xl w-full max-w-md z-10 hidden lg:block pointer-events-auto border border-white/20"
       >
         <div className="flex gap-2 mb-6">
@@ -88,7 +96,7 @@ export default function Hero() {
           className="flex-1 flex flex-col justify-center max-w-2xl mt-8 lg:-mt-20 z-50 pointer-events-none"
         >
           <motion.h1 
-            initial={{ opacity: 0, y: 50 }}
+            initial={isLargeDevice ? { opacity: 0, y: 50 } : false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
             className="text-4xl md:text-5xl lg:text-[4rem] text-[#2c2926] font-medium leading-[1.1] mb-6 pointer-events-auto"
@@ -98,7 +106,7 @@ export default function Hero() {
           </motion.h1>
 
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
+            initial={isLargeDevice ? { opacity: 0, x: -30 } : false}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
             className="flex items-center gap-4 text-[#2c2926] text-base md:text-lg font-medium mb-12 pointer-events-auto"
@@ -108,7 +116,7 @@ export default function Hero() {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={isLargeDevice ? { opacity: 0, y: 30 } : false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
             className="flex flex-wrap items-center gap-6 pointer-events-auto"
@@ -126,9 +134,9 @@ export default function Hero() {
 
           {/* Mobile Only Center Card Substitute */}
           <motion.div
-            initial={{ opacity: 0, y: 50 }}
+            initial={isLargeDevice ? { opacity: 0, y: 50 } : false}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 1 }}
+            transition={{ duration: isLargeDevice ? 1 : 0.3 }}
             className="block lg:hidden mt-12 bg-white/95 p-6 rounded-2xl shadow-xl w-full max-w-sm pointer-events-auto border border-white/20"
           >
             <div className="flex gap-2 mb-4 flex-wrap">
@@ -147,9 +155,9 @@ export default function Hero() {
           {/* Parallax Building (Foreground) [Z-40] */}
           <motion.div
             style={{ y: buildingY, opacity }}
-            initial={{ opacity: 0, x: 50, y: 100 }}
+            initial={isLargeDevice ? { opacity: 0, x: 50, y: 100 } : false}
             animate={{ opacity: 1, x: 0, y: 0 }}
-            transition={{ duration: 1.2, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 1.2, delay: isLargeDevice ? 0.4 : 0, ease: [0.16, 1, 0.3, 1] }}
             className="absolute bottom-0 right-0 w-full md:w-[65%] lg:w-[60%] h-full z-40 drop-shadow-2xl hidden md:block pointer-events-none"
           >
             <div className="relative w-full h-[150%] transform scale-[2.2] origin-bottom-right translate-y-36 lg:translate-y-48 translate-x-20 lg:translate-x-32 xl:translate-x-48">
@@ -168,9 +176,9 @@ export default function Hero() {
       
       {/* Bottom stats/info bar [Z-60] */}
       <motion.div 
-        initial={{ opacity: 0, y: 50 }}
+        initial={isLargeDevice ? { opacity: 0, y: 50 } : false}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, delay: 1.5 }}
+        transition={{ duration: 1, delay: isLargeDevice ? 1.5 : 0 }}
         className="absolute bottom-0 left-0 w-full z-60 bg-linear-to-t from-black/90 via-black/60 to-transparent pt-20 md:pt-32 pb-6 md:pb-8 pointer-events-none"
       >
         <div className="container mx-auto px-6 md:px-12 grid grid-cols-2 md:flex md:flex-row md:justify-between items-end gap-y-4 gap-x-4 md:gap-6 pointer-events-auto lg:pr-[40%] xl:pr-[45%]">

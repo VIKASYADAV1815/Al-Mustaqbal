@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Quote } from 'lucide-react';
 import Image from 'next/image';
@@ -46,6 +46,16 @@ const testimonials = [
 export default function Testimonials() {
   const containerRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(containerRef, { once: true, margin: "-100px" });
+  const [isLargeDevice, setIsLargeDevice] = useState(true);
+
+  useEffect(() => {
+    const checkDevice = () => {
+      setIsLargeDevice(window.innerWidth >= 1024);
+    };
+    checkDevice();
+    window.addEventListener('resize', checkDevice);
+    return () => window.removeEventListener('resize', checkDevice);
+  }, []);
 
   return (
     <section 
@@ -60,12 +70,12 @@ export default function Testimonials() {
       {/* Colorful Light Blobs */}
       <div className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-blue-300/20 rounded-full blur-[120px] pointer-events-none z-0" />
       <div className="absolute bottom-[-10%] right-[-10%] w-[600px] h-[600px] bg-orange-300/20 rounded-full blur-[120px] pointer-events-none z-0" />
-      <div className="absolute top-[20%] left-[40%] w-[400px] h-[400px] bg-emerald-300/15 rounded-full blur-[120px] pointer-events-none z-0" />
+      <div className="absolute top-[20%] left-[40%] w-[400px] h-100 bg-emerald-300/15 rounded-full blur-[120px] pointer-events-none z-0" />
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10 mb-12 md:mb-16">
         <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          initial={isLargeDevice ? { opacity: 0, y: 20 } : false}
+          animate={isLargeDevice ? (isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }) : { opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="flex flex-col items-center"
         >
@@ -91,21 +101,21 @@ export default function Testimonials() {
 
         <motion.div
           className="flex space-x-4 md:space-x-6 px-4 md:px-6 items-center w-max"
-          animate={{ x: ["0%", "-50%"] }}
-          transition={{ repeat: Infinity, duration: 45, ease: "linear" }}
-          whileHover={{ animationPlayState: "paused" }}
+          animate={isLargeDevice ? { x: ["0%", "-50%"] } : { x: 0 }}
+          transition={isLargeDevice ? { repeat: Infinity, duration: 45, ease: "linear" } : {}}
+          whileHover={isLargeDevice ? { animationPlayState: "paused" } : {}}
         >
           {/* Double array for infinite seamless scrolling */}
           {[...testimonials, ...testimonials].map((testimonial, idx) => (
             <motion.div
               key={`${testimonial.id}-${idx}`}
-              whileHover={{ y: -5, scale: 1.01 }}
+              whileHover={isLargeDevice ? { y: -5, scale: 1.01 } : {}}
               transition={{ duration: 0.3 }}
               className="w-[280px] md:w-[360px] shrink-0 p-6 md:p-8 rounded-2xl bg-[#333333] border border-zinc-800/50 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.15)] hover:shadow-[0_8px_30px_-4px_rgba(0,0,0,0.2)] transition-shadow duration-300 relative group/card"
             >
               <Quote className="w-8 h-8 text-zinc-800 mb-4 group-hover/card:text-zinc-700 transition-colors duration-300" />
               
-              <p className="text-sm md:text-base leading-relaxed text-zinc-300 mb-8 min-h-[100px] font-light">
+              <p className="text-sm md:text-base leading-relaxed text-zinc-300 mb-8 min-h-25 font-light">
                 "{testimonial.content}"
               </p>
               

@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 import { motion, useScroll, useTransform, useInView } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 
@@ -77,7 +77,7 @@ export default function Services() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 relative z-10 max-w-5xl">
           {services.map((service, index) => {
             return (
-              <ServiceCard key={index} service={service} index={index} />
+              <ServiceCard key={index} service={service} />
             );
           })}
         </div>
@@ -87,7 +87,7 @@ export default function Services() {
   );
 }
 
-function ServiceCard({ service, index }: { service: any, index: number }) {
+function ServiceCard({ service }: { service: any }) {
   const cardRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: cardRef,
