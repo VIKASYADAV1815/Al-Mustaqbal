@@ -104,7 +104,7 @@ export default function FAQ() {
                     onClick={() => setOpenIndex(openIndex === index ? null : index)}
                     className="w-full flex items-center justify-between py-4 text-left focus:outline-none group"
                   >
-                    <span className={`text-sm md:text-base font-medium pr-6 transition-colors ${openIndex === index ? 'text-white' : 'text-zinc-400 group-hover:text-zinc-200'}`}>
+                    <span className={`text-base md:text-lg font-medium pr-6 transition-colors ${openIndex === index ? 'text-white' : 'text-zinc-400 group-hover:text-zinc-200'}`}>
                       {faq.question}
                     </span>
                     <motion.div
@@ -124,7 +124,7 @@ export default function FAQ() {
                         exit={{ height: 0, opacity: 0 }}
                         transition={{ duration: 0.3 }}
                       >
-                        <div className="pb-4 pt-1 text-zinc-500 font-light leading-relaxed text-xs md:text-sm">
+                        <div className="pb-4 pt-1 text-zinc-500 font-light leading-relaxed text-sm md:text-base">
                           {faq.answer}
                         </div>
                       </motion.div>
