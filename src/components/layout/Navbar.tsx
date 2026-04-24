@@ -65,7 +65,6 @@ export default function Navbar() {
         </div>
 
         <div className="hidden md:flex items-center space-x-6">
-          <span className="text-sm">ENG</span>
           <Link href="#contact" className="text-sm uppercase tracking-widest border-b border-current pb-1 hover:opacity-70 transition-opacity">
             Contact Us
           </Link>

@@ -93,13 +93,13 @@ export default function Hero() {
         {/* Left Side Content [Z-50] */}
         <motion.div 
           style={{ y: textY, opacity }}
-          className="flex-1 flex flex-col justify-center max-w-2xl mt-8 lg:-mt-20 z-50 pointer-events-none"
+          className="flex-1 flex flex-col justify-center lg:max-w-md xl:max-w-xl 2xl:max-w-2xl mt-8 lg:-mt-20 z-50 pointer-events-none"
         >
           <motion.h1 
             initial={isLargeDevice ? { opacity: 0, y: 50 } : false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="text-4xl md:text-5xl lg:text-[4rem] text-[#2c2926] font-medium leading-[1.1] mb-6 pointer-events-auto"
+            className="text-4xl md:text-5xl lg:text-3xl xl:text-4xl 2xl:text-6xl text-[#2c2926] font-medium leading-[1.1] mb-6 pointer-events-auto"
           >
             THE PERFECT <br />
             HOME<sup className="text-xl md:text-3xl top-[-0.8em] relative font-light">®</sup>

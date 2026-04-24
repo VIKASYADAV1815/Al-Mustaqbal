@@ -1,6 +1,7 @@
 "use client";
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
+import Image from 'next/image';
 
 const WORKFORCE_STATS = [
   { label: "Vehicles", value: "15" },
@@ -26,28 +27,17 @@ export default function WorkForce() {
   return (
     <section className="relative py-12 md:py-20 bg-white border-b border-zinc-100 overflow-hidden" ref={ref}>
       
-      {/* Beautiful Dot Pattern Background */}
-      <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
-        <div className="absolute inset-0 bg-[#faf9f8]" />
-        <svg className="absolute inset-0 w-full h-full opacity-[0.08]" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <pattern id="dots" x="0" y="0" width="24" height="24" patternUnits="userSpaceOnUse">
-              <circle cx="2" cy="2" r="1.5" fill="#3a3532" />
-            </pattern>
-            <linearGradient id="dotFade" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stopColor="#3a3532" stopOpacity="0" />
-              <stop offset="50%" stopColor="#3a3532" stopOpacity="1" />
-              <stop offset="100%" stopColor="#3a3532" stopOpacity="0" />
-            </linearGradient>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#dots)" />
-        </svg>
-        <div className="absolute inset-0 bg-linear-to-b from-white/90 via-transparent to-white/90 pointer-events-none" />
+      {/* Background Image with Light Overlay */}
+      <div className="absolute inset-0 z-0">
+        <Image 
+          src="https://images.unsplash.com/photo-1485083269755-a7b559a4fe5e?q=80&w=1169&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          alt="Work Force Background"
+          fill
+          className="object-cover"
+          priority
+        />
+        <div className="absolute inset-0 bg-white/60 backdrop-blur-[2px]" />
       </div>
-
-      {/* Colorful Light Blobs */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-rose-300/15 rounded-full blur-[120px] pointer-events-none z-0 translate-x-1/3 -translate-y-1/3" />
-      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-violet-300/15 rounded-full blur-[120px] pointer-events-none z-0 -translate-x-1/3 translate-y-1/3" />
 
       {/* Header */}
       <div className="container mx-auto px-6 md:px-12 mb-8 md:mb-12 relative z-10">
@@ -83,11 +73,11 @@ export default function WorkForce() {
           {[...WORKFORCE_STATS, ...WORKFORCE_STATS, ...WORKFORCE_STATS].map((stat, index) => (
             <div 
               key={index} 
-              className="flex items-center gap-3 shrink-0 bg-[#333333] px-5 md:px-6 py-3 md:py-4 rounded-full border border-zinc-800/50 shadow-[12px_12px_24px_rgba(0,0,0,0.15),-8px_-8px_20px_rgba(255,255,255,0.8)] hover:shadow-[16px_16px_32px_rgba(0,0,0,0.2),-8px_-8px_20px_rgba(255,255,255,0.9)] hover:-translate-y-0.5 transition-all duration-300 cursor-default"
+              className="flex items-center gap-3 shrink-0 backdrop-blur-md bg-white/30 border border-white/40 px-5 md:px-6 py-3 md:py-4 rounded-full shadow-[0_8px_32px_rgba(0,0,0,0.05)] hover:shadow-[0_8px_32px_rgba(0,0,0,0.1)] hover:-translate-y-0.5 transition-all duration-300 cursor-default"
             >
               <div className="w-1.5 h-1.5 rounded-full bg-zinc-600"></div>
-              <span className="text-white font-bold text-xl md:text-2xl leading-none">{stat.value}</span>
-              <span className="text-zinc-400 uppercase tracking-widest text-[9px] md:text-[11px] font-bold leading-none mt-1">{stat.label}</span>
+              <span className="text-zinc-900 font-bold text-xl md:text-2xl leading-none">{stat.value}</span>
+              <span className="text-zinc-700 uppercase tracking-widest text-[9px] md:text-[11px] font-bold leading-none mt-1">{stat.label}</span>
             </div>
           ))}
         </motion.div>
@@ -106,14 +96,14 @@ export default function WorkForce() {
             return (
             <div 
               key={index}
-              className="flex-1 flex flex-col items-center justify-center gap-2 bg-[#333333] px-8 py-8 rounded-3xl border border-zinc-800/50 transition-all duration-500 shadow-[15px_15px_35px_rgba(0,0,0,0.15),-10px_-10px_25px_rgba(255,255,255,0.8)] hover:shadow-[20px_20px_45px_rgba(0,0,0,0.2),-10px_-10px_25px_rgba(255,255,255,0.9)] hover:-translate-y-1.5"
+              className="flex-1 flex flex-col items-center justify-center gap-2 backdrop-blur-md bg-white/30 px-8 py-8 rounded-3xl border border-white/40 transition-all duration-500 shadow-[0_8px_32px_rgba(0,0,0,0.05)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.1)] hover:-translate-y-1.5"
             >
-                <span className="text-5xl md:text-6xl font-serif font-bold text-white tracking-tight">{stat.value}</span>
+                <span className="text-5xl md:text-6xl font-serif font-bold text-zinc-900 tracking-tight">{stat.value}</span>
                 <div className="flex items-center gap-1.5 mt-2">
-                  <span className="text-zinc-500 uppercase tracking-widest text-[10px] md:text-xs font-bold leading-tight">
+                  <span className="text-zinc-600 uppercase tracking-widest text-[10px] md:text-xs font-bold leading-tight">
                     {splitLabel[0]}
                   </span>
-                  <span className="text-zinc-300 uppercase tracking-widest text-[10px] md:text-xs font-bold leading-tight">
+                  <span className="text-zinc-800 uppercase tracking-widest text-[10px] md:text-xs font-bold leading-tight">
                     {splitLabel[1]}
                   </span>
                 </div>
